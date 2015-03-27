@@ -13,6 +13,7 @@ Feature
 - Touch ID
 - IB_DESIGNABLE
 - Autolayout
+- Localization
 
 
 ### Installation
