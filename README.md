@@ -10,10 +10,8 @@ Overview
 -------------
 It is Lock Screen Controller on platform iOS.
 
-
-### Feature
-
-```
+Feature
+-------------
 - Touch ID
 - IB_DESIGNABLE
 - Autolayout
