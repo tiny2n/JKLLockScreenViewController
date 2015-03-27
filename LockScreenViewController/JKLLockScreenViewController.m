@@ -9,8 +9,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 
-static const CGFloat LSVShakeAnimationDuration = 0.5f;
 static const CGFloat LSVSwipeAnimationDuration = 0.3f;
+static const CGFloat LSVDismissWaitingDuration = 0.4f;
+static const CGFloat LSVShakeAnimationDuration = 0.5f;
 
 @interface JKLLockScreenViewController()<JKLLockScreenPincodeViewDelegate> {
     
@@ -81,8 +82,8 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
                               if (success) {
                                   
                                   // 인증이 완료된 후 창이 dismiss될 때
-                                  // 너무 빨리 dimiss되면 잔상처럼 남으므로 0.4초 딜레이 걸어서 dismiss 함
-                                  dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC));
+                                  // 너무 빨리 dimiss되면 잔상처럼 남으므로 일정시간 딜레이 걸어서 dismiss 함
+                                  dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LSVDismissWaitingDuration * NSEC_PER_SEC));
                                   dispatch_after(delayInSeconds, dispatch_get_main_queue(), ^(void){
                                       dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -195,12 +196,13 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
  */
 - (void)lsv_swipeSubtitleAndPincodeView {
     
-    __weak UIView * weakView = [self view];
+    __weak UIView * weakView = self.view;
+    __weak UIView * weakCode = _pincodeView;
     
-    [_pincodeView setEnabled:NO];
+    [(id)weakCode setEnabled:NO];
     
     CGFloat width = CGRectGetWidth([self view].bounds);
-    NSLayoutConstraint * centerX = [self lsv_findLayoutConstraint:self.view  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
+    NSLayoutConstraint * centerX = [self lsv_findLayoutConstraint:weakView  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
     
     centerX.constant = width;
     [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
@@ -214,7 +216,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
         [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
             [weakView layoutIfNeeded];
         } completion:^(BOOL finished) {
-            [_pincodeView setEnabled:YES];
+            [(id)weakCode setEnabled:YES];
         }];
     }];
 }
