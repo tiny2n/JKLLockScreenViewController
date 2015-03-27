@@ -16,7 +16,7 @@ static const NSUInteger LSPMaxPincodeLength = 4;
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self ymd_initialize];
+        [self lsp_initialize];
     }
     
     return self;
@@ -24,7 +24,7 @@ static const NSUInteger LSPMaxPincodeLength = 4;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        [self ymd_initialize];
+        [self lsp_initialize];
     }
     
     return self;
@@ -32,13 +32,13 @@ static const NSUInteger LSPMaxPincodeLength = 4;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self ymd_initialize];
+        [self lsp_initialize];
     }
     
     return self;
 }
 
-- (void)ymd_initialize {
+- (void)lsp_initialize {
     
     [self initPincode];
 }

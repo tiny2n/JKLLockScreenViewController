@@ -37,15 +37,15 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
         }
         case LockScreenModeNew: {
             // [신규 모드]
-            [self updateTitle:NSLocalizedStringFromTable(@"Pincode Title",    @"JKLockScreen", nil)
-                     subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle", @"JKLockScreen", nil)];
+            [self lsv_updateTitle:NSLocalizedStringFromTable(@"Pincode Title",    @"JKLockScreen", nil)
+                         subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle", @"JKLockScreen", nil)];
 
             break;
         }
         case LockScreenModeChange:
             // [변경 모드]
-            [self updateTitle:NSLocalizedStringFromTable(@"New Pincode Title",    @"JKLockScreen", nil)
-                     subtitle:NSLocalizedStringFromTable(@"New Pincode Subtitle", @"JKLockScreen", nil)];
+            [self lsv_updateTitle:NSLocalizedStringFromTable(@"New Pincode Title",    @"JKLockScreen", nil)
+                         subtitle:NSLocalizedStringFromTable(@"New Pincode Subtitle", @"JKLockScreen", nil)];
             break;
     }
 }
@@ -58,7 +58,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
     if (isModeNormal && [_delegate respondsToSelector:@selector(allowTouchIDLockScreenViewController:)]) {
         if ([_dataSource allowTouchIDLockScreenViewController:self]) {
             // Touch ID 암호 입력창 호출
-            [self policyDeviceOwnerAuthentication];
+            [self lsv_policyDeviceOwnerAuthentication];
         }
     }
 }
@@ -66,7 +66,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
 /**
  Touch ID 창을 호출하는 메소드
  */
-- (void)policyDeviceOwnerAuthentication {
+- (void)lsv_policyDeviceOwnerAuthentication {
     LAContext * context = [[LAContext alloc] init];
     NSError   * error   = nil;
     
@@ -109,7 +109,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
  @param  NSString PIN code
  @return BOOL 암호 유효성
  */
-- (BOOL)isPincodeValid:(NSString *)pincode {
+- (BOOL)lsv_isPincodeValid:(NSString *)pincode {
     
     // 기존에 암호가 없거나, [변경모드]라면 무조건 YES
     BOOL confirm = [_confirmPincode isEqualToString:pincode];
@@ -129,7 +129,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
  @param NSString 주 제목
  @param NSString 서브 제목
  */
-- (void)updateTitle:(NSString *)title subtitle:(NSString *)subtitle {
+- (void)lsv_updateTitle:(NSString *)title subtitle:(NSString *)subtitle {
     [_titleLabel    setText:title];
     [_subtitleLabel setText:subtitle];
 }
@@ -217,8 +217,8 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
         [self setLockScreenMode:LockScreenModeNormal];
         
         // 재입력 타이틀로 전환
-        [self updateTitle:NSLocalizedStringFromTable(@"Pincode Title Confirm",    @"JKLockScreen", nil)     // @"암호 재입력"
-                 subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle Confirm", @"JKLockScreen", nil)];   // @"확인을 위해 한 번 더 입력해 주세요."];
+        [self lsv_updateTitle:NSLocalizedStringFromTable(@"Pincode Title Confirm",    @"JKLockScreen", nil)
+                     subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle Confirm", @"JKLockScreen", nil)];
         
         // 서브타이틀과 pincodeviw 이동 애니메이션
         [self swipeSubtitleAndScreenPinView];
@@ -226,7 +226,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
     }
     else {
         // [일반 모드]
-        if ([self isPincodeValid:pincode]) {
+        if ([self lsv_isPincodeValid:pincode]) {
             [self unlockScreenSuccessful:pincode];
         }
         else {
