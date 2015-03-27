@@ -197,6 +197,8 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
     
     __weak UIView * weakView = [self view];
     
+    [_pincodeView setEnabled:NO];
+    
     CGFloat width = CGRectGetWidth([self view].bounds);
     NSLayoutConstraint * centerX = [self lsv_findLayoutConstraint:self.view  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
     
@@ -211,6 +213,8 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
         centerX.constant = 0;
         [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
             [weakView layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [_pincodeView setEnabled:YES];
         }];
     }];
 }
@@ -263,8 +267,8 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
                      subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle Confirm", @"JKLockScreen", nil)];
         
         // 서브타이틀과 pincodeviw 이동 애니메이션
-        [self lsv_swipeSubtitleAndPincodeView];
         [_pincodeView initPincode];
+        [self lsv_swipeSubtitleAndPincodeView];
     }
     else {
         // [일반 모드]
