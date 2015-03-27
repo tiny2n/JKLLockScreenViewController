@@ -67,8 +67,9 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
  Touch ID 창을 호출하는 메소드
  */
 - (void)lsv_policyDeviceOwnerAuthentication {
-    LAContext * context = [[LAContext alloc] init];
+    
     NSError   * error   = nil;
+    LAContext * context = [[LAContext alloc] init];
     
     // check if the policy can be evaluated
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
@@ -94,12 +95,12 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
                                   });
                               }
                               else {
-                                  NSLog(@"LAContext Authentication Error : %@", authenticationError);
+                                  NSLog(@"LAContext::Authentication Error : %@", authenticationError);
                               }
                           }];
     }
     else {
-        NSLog(@"LAContext Policy Error : %@", [error localizedDescription]);
+        NSLog(@"LAContext::Policy Error : %@", [error localizedDescription]);
     }
 
 }
@@ -185,6 +186,47 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
     return shake;
 }
 
+/**
+ 서브 타이틀과 ScreenPinView를 애니메이션 하는 메소드
+ ! PincodeView는 제약이 서브타이틀과 같이 묶여 있으므로 따로 해주지 않아도 됨
+ 1차 : 화면 왼쪽 끝으로 이동 with Animation
+ 2차 : 화면 오른쪽 끝으로 이동 without Animation
+ 3차 : 화면 가운데로 이동 with Animation
+ */
+- (void)lsv_swipeSubtitleAndPincodeView {
+    
+    __weak UIView * weakView = [self view];
+    
+    CGFloat width = CGRectGetWidth([self view].bounds);
+    NSLayoutConstraint * centerX = [self lsv_findLayoutConstraint:self.view  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
+    
+    centerX.constant = width;
+    [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
+        [weakView layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        
+        centerX.constant = -width;
+        [weakView layoutIfNeeded];
+        
+        centerX.constant = 0;
+        [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
+            [weakView layoutIfNeeded];
+        }];
+    }];
+}
+
+#pragma mark -
+#pragma mark NSLayoutConstraint
+- (NSLayoutConstraint *)lsv_findLayoutConstraint:(UIView *)superview childView:(UIView *)childView attribute:(NSLayoutAttribute)attribute {
+    for (NSLayoutConstraint * constraint in superview.constraints) {
+        if (constraint.firstItem == superview && constraint.secondItem == childView && constraint.firstAttribute == attribute) {
+            return constraint;
+        }
+    }
+    
+    return nil;
+}
+
 #pragma mark -
 #pragma mark IBAction
 - (IBAction)onNumberClicked:(id)sender {
@@ -233,47 +275,6 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
             [self lsv_unlockScreenFailure];
         }
     }
-}
-
-/**
- 서브 타이틀과 ScreenPinView를 애니메이션 하는 메소드
- ! PincodeView는 제약이 서브타이틀과 같이 묶여 있으므로 따로 해주지 않아도 됨
- 1차 : 화면 왼쪽 끝으로 이동 with Animation
- 2차 : 화면 오른쪽 끝으로 이동 without Animation
- 3차 : 화면 가운데로 이동 with Animation
- */
-- (void)lsv_swipeSubtitleAndPincodeView {
-
-    __weak UIView * weakView = [self view];
-    
-    CGFloat width = CGRectGetWidth([self view].bounds);
-    NSLayoutConstraint * centerX = [self lsv_findLayoutConstraint:self.view  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
-    
-    centerX.constant = width;
-    [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
-        [weakView layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        
-        centerX.constant = -width;
-        [weakView layoutIfNeeded];
-        
-        centerX.constant = 0;
-        [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
-            [weakView layoutIfNeeded];
-        }];
-    }];
-}
-
-#pragma mark -
-#pragma mark NSLayoutConstraint
-- (NSLayoutConstraint *)lsv_findLayoutConstraint:(UIView *)superview childView:(UIView *)childView attribute:(NSLayoutAttribute)attribute {
-    for (NSLayoutConstraint * constraint in superview.constraints) {
-        if (constraint.firstItem == superview && constraint.secondItem == childView && constraint.firstAttribute == attribute) {
-            return constraint;
-        }
-    }
-    
-    return nil;
 }
 
 @end
