@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JKLLockScreenViewController">
+            <connections>
+                <outlet property="cancelButton" destination="FQY-YJ-s13" id="LvN-XY-WGN"/>
+                <outlet property="pincodeView" destination="m9L-6k-5Ek" id="v93-vK-MtE"/>
+                <outlet property="subtitleLabel" destination="ZQY-Kh-0Rp" id="eaC-Se-F9d"/>
+                <outlet property="titleLabel" destination="GYn-QP-Hxd" id="UhZ-Yw-5xe"/>
+                <outlet property="view" destination="o8q-oj-x0p" id="u2N-9Y-KK0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="o8q-oj-x0p">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pincode Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYn-QP-Hxd">
+                    <rect key="frame" x="16" y="46" width="288" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="2p4-8U-278"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pincode Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQY-Kh-0Rp">
+                    <rect key="frame" x="16" y="78" width="288" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="288" id="8YM-1Y-xeB"/>
+                        <constraint firstAttribute="height" constant="20" id="pWt-rd-QtS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9L-6k-5Ek" customClass="JKLLockScreenPincodeView">
+                    <rect key="frame" x="80" y="108" width="160" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="6OE-6L-50c"/>
+                        <constraint firstAttribute="height" constant="50" id="mBp-ys-R4f"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="pincodeColor">
+                            <color key="value" red="0.94509804249999996" green="0.67058825489999996" blue="0.14901961389999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="dmk-uk-HBz"/>
+                    </connections>
+                </view>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-eA-C4O" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="30" y="179" width="67" height="66"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="1">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="v0h-2A-mu8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBg-pK-9tk" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="127" y="178" width="66" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="SBg-pK-9tk" secondAttribute="height" multiplier="1:1" id="E5d-D1-fr7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="2">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="0bB-UD-Lrr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hq-Q0-bjD" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="223" y="179" width="67" height="66"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="3">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="6e1-n2-XJX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QyS-VR-dPm" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="31" y="255" width="66" height="66"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="4">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="vpa-vZ-BYm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvV-SJ-V7g" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="127" y="255" width="66" height="66"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="5">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="7o3-xu-8p3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpd-rI-jSQ" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="223" y="255" width="67" height="66"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="6">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="fWT-2o-olr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gme-Zb-pEh" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="30" y="331" width="67" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="7">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="DM1-gN-Avb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxe-eA-Ykl" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="127" y="331" width="66" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="8">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="tHO-CB-9Yw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNC-na-sgE" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="223" y="331" width="67" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="9">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="iE9-br-9n0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffV-HS-hDe" customClass="JKLLockScreenNumber">
+                    <rect key="frame" x="127" y="408" width="66" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="tintColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="0">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onNumberClicked:" destination="-1" eventType="touchUpInside" id="f8M-Lx-7gW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQY-YJ-s13">
+                    <rect key="frame" x="30" y="408" width="67" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onCancelClicked:" destination="-1" eventType="touchUpInside" id="hbH-HJ-4fa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EID-AK-YAo">
+                    <rect key="frame" x="223" y="408" width="67" height="67"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Delete">
+                        <color key="titleColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onDeleteClicked:" destination="-1" eventType="touchUpInside" id="brk-LG-abu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kpd-rI-jSQ" firstAttribute="centerX" secondItem="5Hq-Q0-bjD" secondAttribute="centerX" id="0z6-eg-UwW"/>
+                <constraint firstItem="SBg-pK-9tk" firstAttribute="height" secondItem="5Hq-Q0-bjD" secondAttribute="height" id="1td-3r-HCo"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="height" secondItem="wvV-SJ-V7g" secondAttribute="height" id="1yF-do-xaP"/>
+                <constraint firstItem="GYn-QP-Hxd" firstAttribute="leading" secondItem="o8q-oj-x0p" secondAttribute="leading" constant="16" id="435-jo-7aL"/>
+                <constraint firstItem="TNC-na-sgE" firstAttribute="centerX" secondItem="kpd-rI-jSQ" secondAttribute="centerX" id="ACR-dH-lV3"/>
+                <constraint firstItem="EID-AK-YAo" firstAttribute="centerY" secondItem="ffV-HS-hDe" secondAttribute="centerY" id="Adx-1Z-Cdh"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="top" secondItem="SBg-pK-9tk" secondAttribute="bottom" constant="10" id="BTG-ZH-83u"/>
+                <constraint firstItem="FQY-YJ-s13" firstAttribute="centerX" secondItem="gme-Zb-pEh" secondAttribute="centerX" id="CE1-3V-Kka"/>
+                <constraint firstAttribute="trailing" secondItem="5Hq-Q0-bjD" secondAttribute="trailing" constant="30" id="E7c-3V-Knw"/>
+                <constraint firstItem="kpd-rI-jSQ" firstAttribute="width" secondItem="wvV-SJ-V7g" secondAttribute="width" id="EtG-j0-6wU"/>
+                <constraint firstItem="hGX-eA-C4O" firstAttribute="centerY" secondItem="SBg-pK-9tk" secondAttribute="centerY" id="Fvg-RB-ORX"/>
+                <constraint firstItem="hGX-eA-C4O" firstAttribute="leading" secondItem="o8q-oj-x0p" secondAttribute="leading" constant="30" id="HZy-RN-Cwb"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="height" secondItem="ffV-HS-hDe" secondAttribute="height" id="L4s-ym-yMG"/>
+                <constraint firstItem="SBg-pK-9tk" firstAttribute="width" secondItem="5Hq-Q0-bjD" secondAttribute="width" id="NH2-Qc-jRI"/>
+                <constraint firstItem="ZQY-Kh-0Rp" firstAttribute="top" secondItem="GYn-QP-Hxd" secondAttribute="bottom" constant="8" id="PQd-fp-OiA"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="centerX" secondItem="SBg-pK-9tk" secondAttribute="centerX" id="PVT-8B-9W0"/>
+                <constraint firstItem="kpd-rI-jSQ" firstAttribute="height" secondItem="wvV-SJ-V7g" secondAttribute="height" id="Pge-fx-nQg"/>
+                <constraint firstItem="TNC-na-sgE" firstAttribute="centerY" secondItem="Oxe-eA-Ykl" secondAttribute="centerY" id="QbW-cx-be0"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="centerY" secondItem="gme-Zb-pEh" secondAttribute="centerY" id="Quq-kL-hAG"/>
+                <constraint firstAttribute="centerX" secondItem="ZQY-Kh-0Rp" secondAttribute="centerX" id="T7Q-Gk-bKX"/>
+                <constraint firstItem="5Hq-Q0-bjD" firstAttribute="leading" secondItem="SBg-pK-9tk" secondAttribute="trailing" constant="30" id="UMm-73-OVP"/>
+                <constraint firstAttribute="trailing" secondItem="GYn-QP-Hxd" secondAttribute="trailing" constant="16" id="V9v-Ud-gTl"/>
+                <constraint firstItem="TNC-na-sgE" firstAttribute="centerX" secondItem="EID-AK-YAo" secondAttribute="centerX" id="WAb-U4-5I3"/>
+                <constraint firstItem="QyS-VR-dPm" firstAttribute="centerX" secondItem="hGX-eA-C4O" secondAttribute="centerX" id="XGc-NV-Jv9"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="height" secondItem="SBg-pK-9tk" secondAttribute="height" id="YIm-kg-aee"/>
+                <constraint firstItem="EID-AK-YAo" firstAttribute="height" secondItem="ffV-HS-hDe" secondAttribute="height" id="YSR-bk-63p"/>
+                <constraint firstItem="TNC-na-sgE" firstAttribute="width" secondItem="Oxe-eA-Ykl" secondAttribute="width" id="Zee-Xs-BOI"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="top" secondItem="wvV-SJ-V7g" secondAttribute="bottom" constant="10" id="b9d-Pm-hmt"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="width" secondItem="QyS-VR-dPm" secondAttribute="width" id="bee-UI-ewS"/>
+                <constraint firstItem="kpd-rI-jSQ" firstAttribute="centerY" secondItem="wvV-SJ-V7g" secondAttribute="centerY" id="cAN-7m-j2q"/>
+                <constraint firstItem="FQY-YJ-s13" firstAttribute="height" secondItem="ffV-HS-hDe" secondAttribute="height" id="dEv-4R-Bzw"/>
+                <constraint firstItem="ZQY-Kh-0Rp" firstAttribute="centerX" secondItem="m9L-6k-5Ek" secondAttribute="centerX" id="dg7-2I-iIz"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="width" secondItem="SBg-pK-9tk" secondAttribute="width" id="eGH-6b-3Kv"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="centerY" secondItem="QyS-VR-dPm" secondAttribute="centerY" id="eGV-ku-cYu"/>
+                <constraint firstItem="hGX-eA-C4O" firstAttribute="height" secondItem="SBg-pK-9tk" secondAttribute="height" id="ec1-sG-v9H"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="centerX" secondItem="wvV-SJ-V7g" secondAttribute="centerX" id="g7q-U1-cwz"/>
+                <constraint firstItem="gme-Zb-pEh" firstAttribute="centerX" secondItem="QyS-VR-dPm" secondAttribute="centerX" id="hf3-zQ-cyf"/>
+                <constraint firstItem="wvV-SJ-V7g" firstAttribute="height" secondItem="QyS-VR-dPm" secondAttribute="height" id="jrg-sT-PiH"/>
+                <constraint firstItem="TNC-na-sgE" firstAttribute="height" secondItem="Oxe-eA-Ykl" secondAttribute="height" id="k7A-vp-AGI"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="centerX" secondItem="ffV-HS-hDe" secondAttribute="centerX" id="kB0-Gd-e0X"/>
+                <constraint firstItem="FQY-YJ-s13" firstAttribute="centerY" secondItem="ffV-HS-hDe" secondAttribute="centerY" id="kQL-bI-z3Z"/>
+                <constraint firstItem="FQY-YJ-s13" firstAttribute="width" secondItem="ffV-HS-hDe" secondAttribute="width" id="mlS-km-xEW"/>
+                <constraint firstItem="GYn-QP-Hxd" firstAttribute="top" secondItem="o8q-oj-x0p" secondAttribute="top" constant="46" id="ncy-pL-C1u"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="height" secondItem="gme-Zb-pEh" secondAttribute="height" id="oOS-Xc-I2G"/>
+                <constraint firstItem="SBg-pK-9tk" firstAttribute="centerY" secondItem="5Hq-Q0-bjD" secondAttribute="centerY" id="p9Q-ZM-kdo"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="width" secondItem="ffV-HS-hDe" secondAttribute="width" id="rJI-nO-VNA"/>
+                <constraint firstItem="SBg-pK-9tk" firstAttribute="leading" secondItem="hGX-eA-C4O" secondAttribute="trailing" constant="30" id="rdW-33-AVN"/>
+                <constraint firstItem="SBg-pK-9tk" firstAttribute="top" secondItem="m9L-6k-5Ek" secondAttribute="bottom" constant="20" id="sP7-n9-ffa"/>
+                <constraint firstItem="EID-AK-YAo" firstAttribute="width" secondItem="ffV-HS-hDe" secondAttribute="width" id="tPB-rr-hWp"/>
+                <constraint firstItem="m9L-6k-5Ek" firstAttribute="top" secondItem="ZQY-Kh-0Rp" secondAttribute="bottom" constant="10" id="uRd-Dm-xvJ"/>
+                <constraint firstItem="hGX-eA-C4O" firstAttribute="width" secondItem="SBg-pK-9tk" secondAttribute="width" id="wB8-Ev-clc"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="width" secondItem="wvV-SJ-V7g" secondAttribute="width" id="yQr-fh-CET"/>
+                <constraint firstItem="ffV-HS-hDe" firstAttribute="top" secondItem="Oxe-eA-Ykl" secondAttribute="bottom" constant="10" id="zxf-YF-OGB"/>
+                <constraint firstItem="Oxe-eA-Ykl" firstAttribute="width" secondItem="gme-Zb-pEh" secondAttribute="width" id="zye-aR-O8Z"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="580" y="634"/>
+        </view>
+    </objects>
+</document>

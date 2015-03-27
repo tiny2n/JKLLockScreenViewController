@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D8A30BB1AC5164C009ACAD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30BA1AC5164C009ACAD1 /* main.m */; };
+		4D8A30BE1AC5164C009ACAD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30BD1AC5164C009ACAD1 /* AppDelegate.m */; };
+		4D8A30C11AC5164C009ACAD1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30C01AC5164C009ACAD1 /* ViewController.m */; };
+		4D8A30C41AC5164C009ACAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A30C21AC5164C009ACAD1 /* Main.storyboard */; };
+		4D8A30C61AC5164C009ACAD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A30C51AC5164C009ACAD1 /* Images.xcassets */; };
+		4D8A30C91AC5164C009ACAD1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A30C71AC5164C009ACAD1 /* LaunchScreen.xib */; };
+		4D8A30D51AC5164C009ACAD1 /* LockScreenViewController_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30D41AC5164C009ACAD1 /* LockScreenViewController_DemoTests.m */; };
+		4D8A30E91AC5165A009ACAD1 /* JKLLockScreenNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30E01AC5165A009ACAD1 /* JKLLockScreenNumber.m */; };
+		4D8A30EA1AC5165A009ACAD1 /* JKLLockScreenPincodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30E21AC5165A009ACAD1 /* JKLLockScreenPincodeView.m */; };
+		4D8A30EB1AC5165A009ACAD1 /* JKLLockScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A30E41AC5165A009ACAD1 /* JKLLockScreenViewController.m */; };
+		4D8A30EC1AC5165A009ACAD1 /* JKLLockScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A30E51AC5165A009ACAD1 /* JKLLockScreenViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4D8A30CF1AC5164C009ACAD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4D8A30AD1AC5164C009ACAD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D8A30B41AC5164C009ACAD1;
+			remoteInfo = "LockScreenViewController-Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4D8A30B51AC5164C009ACAD1 /* LockScreenViewController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LockScreenViewController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8A30B91AC5164C009ACAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D8A30BA1AC5164C009ACAD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4D8A30BC1AC5164C009ACAD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4D8A30BD1AC5164C009ACAD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4D8A30BF1AC5164C009ACAD1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4D8A30C01AC5164C009ACAD1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4D8A30C31AC5164C009ACAD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4D8A30C51AC5164C009ACAD1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4D8A30C81AC5164C009ACAD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4D8A30CE1AC5164C009ACAD1 /* LockScreenViewController-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LockScreenViewController-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8A30D31AC5164C009ACAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D8A30D41AC5164C009ACAD1 /* LockScreenViewController_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LockScreenViewController_DemoTests.m; sourceTree = "<group>"; };
+		4D8A30DF1AC5165A009ACAD1 /* JKLLockScreenNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLLockScreenNumber.h; sourceTree = "<group>"; };
+		4D8A30E01AC5165A009ACAD1 /* JKLLockScreenNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLLockScreenNumber.m; sourceTree = "<group>"; };
+		4D8A30E11AC5165A009ACAD1 /* JKLLockScreenPincodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLLockScreenPincodeView.h; sourceTree = "<group>"; };
+		4D8A30E21AC5165A009ACAD1 /* JKLLockScreenPincodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLLockScreenPincodeView.m; sourceTree = "<group>"; };
+		4D8A30E31AC5165A009ACAD1 /* JKLLockScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLLockScreenViewController.h; sourceTree = "<group>"; };
+		4D8A30E41AC5165A009ACAD1 /* JKLLockScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLLockScreenViewController.m; sourceTree = "<group>"; };
+		4D8A30E51AC5165A009ACAD1 /* JKLLockScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JKLLockScreenViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D8A30B21AC5164C009ACAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D8A30CB1AC5164C009ACAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4D8A30AC1AC5164C009ACAD1 = {
+			isa = PBXGroup;
+			children = (
+				4D8A30DE1AC5165A009ACAD1 /* LockScreenViewController */,
+				4D8A30B71AC5164C009ACAD1 /* LockScreenViewController-Demo */,
+				4D8A30D11AC5164C009ACAD1 /* LockScreenViewController-DemoTests */,
+				4D8A30B61AC5164C009ACAD1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4D8A30B61AC5164C009ACAD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D8A30B51AC5164C009ACAD1 /* LockScreenViewController-Demo.app */,
+				4D8A30CE1AC5164C009ACAD1 /* LockScreenViewController-DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D8A30B71AC5164C009ACAD1 /* LockScreenViewController-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				4D8A30BC1AC5164C009ACAD1 /* AppDelegate.h */,
+				4D8A30BD1AC5164C009ACAD1 /* AppDelegate.m */,
+				4D8A30BF1AC5164C009ACAD1 /* ViewController.h */,
+				4D8A30C01AC5164C009ACAD1 /* ViewController.m */,
+				4D8A30C21AC5164C009ACAD1 /* Main.storyboard */,
+				4D8A30C51AC5164C009ACAD1 /* Images.xcassets */,
+				4D8A30C71AC5164C009ACAD1 /* LaunchScreen.xib */,
+				4D8A30B81AC5164C009ACAD1 /* Supporting Files */,
+			);
+			path = "LockScreenViewController-Demo";
+			sourceTree = "<group>";
+		};
+		4D8A30B81AC5164C009ACAD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D8A30B91AC5164C009ACAD1 /* Info.plist */,
+				4D8A30BA1AC5164C009ACAD1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D8A30D11AC5164C009ACAD1 /* LockScreenViewController-DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D8A30D41AC5164C009ACAD1 /* LockScreenViewController_DemoTests.m */,
+				4D8A30D21AC5164C009ACAD1 /* Supporting Files */,
+			);
+			path = "LockScreenViewController-DemoTests";
+			sourceTree = "<group>";
+		};
+		4D8A30D21AC5164C009ACAD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D8A30D31AC5164C009ACAD1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D8A30DE1AC5165A009ACAD1 /* LockScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4D8A30DF1AC5165A009ACAD1 /* JKLLockScreenNumber.h */,
+				4D8A30E01AC5165A009ACAD1 /* JKLLockScreenNumber.m */,
+				4D8A30E11AC5165A009ACAD1 /* JKLLockScreenPincodeView.h */,
+				4D8A30E21AC5165A009ACAD1 /* JKLLockScreenPincodeView.m */,
+				4D8A30E31AC5165A009ACAD1 /* JKLLockScreenViewController.h */,
+				4D8A30E41AC5165A009ACAD1 /* JKLLockScreenViewController.m */,
+				4D8A30E51AC5165A009ACAD1 /* JKLLockScreenViewController.xib */,
+			);
+			name = LockScreenViewController;
+			path = ../LockScreenViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D8A30B41AC5164C009ACAD1 /* LockScreenViewController-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D8A30D81AC5164C009ACAD1 /* Build configuration list for PBXNativeTarget "LockScreenViewController-Demo" */;
+			buildPhases = (
+				4D8A30B11AC5164C009ACAD1 /* Sources */,
+				4D8A30B21AC5164C009ACAD1 /* Frameworks */,
+				4D8A30B31AC5164C009ACAD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LockScreenViewController-Demo";
+			productName = "LockScreenViewController-Demo";
+			productReference = 4D8A30B51AC5164C009ACAD1 /* LockScreenViewController-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4D8A30CD1AC5164C009ACAD1 /* LockScreenViewController-DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D8A30DB1AC5164C009ACAD1 /* Build configuration list for PBXNativeTarget "LockScreenViewController-DemoTests" */;
+			buildPhases = (
+				4D8A30CA1AC5164C009ACAD1 /* Sources */,
+				4D8A30CB1AC5164C009ACAD1 /* Frameworks */,
+				4D8A30CC1AC5164C009ACAD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D8A30D01AC5164C009ACAD1 /* PBXTargetDependency */,
+			);
+			name = "LockScreenViewController-DemoTests";
+			productName = "LockScreenViewController-DemoTests";
+			productReference = 4D8A30CE1AC5164C009ACAD1 /* LockScreenViewController-DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D8A30AD1AC5164C009ACAD1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = JoongKwan.Choi;
+				TargetAttributes = {
+					4D8A30B41AC5164C009ACAD1 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					4D8A30CD1AC5164C009ACAD1 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 4D8A30B41AC5164C009ACAD1;
+					};
+				};
+			};
+			buildConfigurationList = 4D8A30B01AC5164C009ACAD1 /* Build configuration list for PBXProject "LockScreenViewController-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4D8A30AC1AC5164C009ACAD1;
+			productRefGroup = 4D8A30B61AC5164C009ACAD1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D8A30B41AC5164C009ACAD1 /* LockScreenViewController-Demo */,
+				4D8A30CD1AC5164C009ACAD1 /* LockScreenViewController-DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D8A30B31AC5164C009ACAD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D8A30C41AC5164C009ACAD1 /* Main.storyboard in Resources */,
+				4D8A30EC1AC5165A009ACAD1 /* JKLLockScreenViewController.xib in Resources */,
+				4D8A30C91AC5164C009ACAD1 /* LaunchScreen.xib in Resources */,
+				4D8A30C61AC5164C009ACAD1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D8A30CC1AC5164C009ACAD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D8A30B11AC5164C009ACAD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D8A30EA1AC5165A009ACAD1 /* JKLLockScreenPincodeView.m in Sources */,
+				4D8A30EB1AC5165A009ACAD1 /* JKLLockScreenViewController.m in Sources */,
+				4D8A30C11AC5164C009ACAD1 /* ViewController.m in Sources */,
+				4D8A30BE1AC5164C009ACAD1 /* AppDelegate.m in Sources */,
+				4D8A30BB1AC5164C009ACAD1 /* main.m in Sources */,
+				4D8A30E91AC5165A009ACAD1 /* JKLLockScreenNumber.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D8A30CA1AC5164C009ACAD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D8A30D51AC5164C009ACAD1 /* LockScreenViewController_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4D8A30D01AC5164C009ACAD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D8A30B41AC5164C009ACAD1 /* LockScreenViewController-Demo */;
+			targetProxy = 4D8A30CF1AC5164C009ACAD1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4D8A30C21AC5164C009ACAD1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D8A30C31AC5164C009ACAD1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4D8A30C71AC5164C009ACAD1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D8A30C81AC5164C009ACAD1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4D8A30D61AC5164C009ACAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4D8A30D71AC5164C009ACAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D8A30D91AC5164C009ACAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "LockScreenViewController-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4D8A30DA1AC5164C009ACAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "LockScreenViewController-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4D8A30DC1AC5164C009ACAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LockScreenViewController-DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LockScreenViewController-Demo.app/LockScreenViewController-Demo";
+			};
+			name = Debug;
+		};
+		4D8A30DD1AC5164C009ACAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LockScreenViewController-DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LockScreenViewController-Demo.app/LockScreenViewController-Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4D8A30B01AC5164C009ACAD1 /* Build configuration list for PBXProject "LockScreenViewController-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D8A30D61AC5164C009ACAD1 /* Debug */,
+				4D8A30D71AC5164C009ACAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D8A30D81AC5164C009ACAD1 /* Build configuration list for PBXNativeTarget "LockScreenViewController-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D8A30D91AC5164C009ACAD1 /* Debug */,
+				4D8A30DA1AC5164C009ACAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D8A30DB1AC5164C009ACAD1 /* Build configuration list for PBXNativeTarget "LockScreenViewController-DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D8A30DC1AC5164C009ACAD1 /* Debug */,
+				4D8A30DD1AC5164C009ACAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4D8A30AD1AC5164C009ACAD1 /* Project object */;
+}
