@@ -1,6 +1,5 @@
 <h1 align="center">JKLLockScreenViewController</h1>
 
-=============
 <p align="center">
 <img src="https://img.shields.io/cocoapods/p/DeepLinkSDK.svg?style=flat" alt="Platform" /></a>
 </p>
