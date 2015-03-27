@@ -64,7 +64,7 @@ License
 -------------------------------------------------------
 The MIT License (MIT)
 
-Copyright (c) 2014 JoongKwan Choi
+Copyright (c) 2015 JoongKwan Choi
 
 JKLib
 
