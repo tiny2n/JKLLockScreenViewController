@@ -138,7 +138,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
  잠금 해제에 성공했을 경우 발생하는 메소드
  @param NSString PIN code
  */
-- (void)unlockScreenSuccessful:(NSString *)pincode {
+- (void)lsv_unlockScreenSuccessful:(NSString *)pincode {
     [self dismissViewControllerAnimated:NO completion:^{
         if ([_delegate respondsToSelector:@selector(unlockWasSuccessfulLockScreenViewController:pincode:)]) {
             [_delegate unlockWasSuccessfulLockScreenViewController:self pincode:pincode];
@@ -149,7 +149,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
 /**
  잠금 해제에 실패했을 경우 발생하는 메소드
  */
-- (void)unlockScreenFailure {
+- (void)lsv_unlockScreenFailure {
 
     if ([_delegate respondsToSelector:@selector(unlockWasFailureLockScreenViewController:)]) {
         [_delegate unlockWasFailureLockScreenViewController:self];
@@ -158,8 +158,8 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
     // 디바이스 진동
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
-    // animation shake
-    CAAnimation * shake = [self makeShakeAnimation];
+    // make shake animation
+    CAAnimation * shake = [self lsv_makeShakeAnimation];
     [_pincodeView.layer addAnimation:shake forKey:@"shake"];
     [_pincodeView setEnabled:NO];
     [_subtitleLabel setText:NSLocalizedStringFromTable(@"Pincode Not Match Title", @"JKLockScreen", nil)];
@@ -175,7 +175,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
  쉐이크 에니메이션을 생성하는 메소드
  @return CAAnimation
  */
-- (CAAnimation *)makeShakeAnimation {
+- (CAAnimation *)lsv_makeShakeAnimation {
     
     CAKeyframeAnimation * shake = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
     [shake setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
@@ -221,32 +221,33 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
                      subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle Confirm", @"JKLockScreen", nil)];
         
         // 서브타이틀과 pincodeviw 이동 애니메이션
-        [self swipeSubtitleAndScreenPinView];
+        [self lsv_swipeSubtitleAndPincodeView];
         [_pincodeView initPincode];
     }
     else {
         // [일반 모드]
         if ([self lsv_isPincodeValid:pincode]) {
-            [self unlockScreenSuccessful:pincode];
+            [self lsv_unlockScreenSuccessful:pincode];
         }
         else {
-            [self unlockScreenFailure];
+            [self lsv_unlockScreenFailure];
         }
     }
 }
 
 /**
  서브 타이틀과 ScreenPinView를 애니메이션 하는 메소드
+ ! PincodeView는 제약이 서브타이틀과 같이 묶여 있으므로 따로 해주지 않아도 됨
  1차 : 화면 왼쪽 끝으로 이동 with Animation
  2차 : 화면 오른쪽 끝으로 이동 without Animation
  3차 : 화면 가운데로 이동 with Animation
  */
-- (void)swipeSubtitleAndScreenPinView {
+- (void)lsv_swipeSubtitleAndPincodeView {
 
     __weak UIView * weakView = [self view];
     
     CGFloat width = CGRectGetWidth([self view].bounds);
-    NSLayoutConstraint * centerX = [self findLayoutConstraint:self.view  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
+    NSLayoutConstraint * centerX = [self lsv_findLayoutConstraint:self.view  childView:_subtitleLabel attribute:NSLayoutAttributeCenterX];
     
     centerX.constant = width;
     [UIView animateWithDuration:LSVSwipeAnimationDuration animations:^{
@@ -265,7 +266,7 @@ static const CGFloat LSVSwipeAnimationDuration = 0.3f;
 
 #pragma mark -
 #pragma mark NSLayoutConstraint
-- (NSLayoutConstraint *)findLayoutConstraint:(UIView *)superview childView:(UIView *)childView attribute:(NSLayoutAttribute)attribute {
+- (NSLayoutConstraint *)lsv_findLayoutConstraint:(UIView *)superview childView:(UIView *)childView attribute:(NSLayoutAttribute)attribute {
     for (NSLayoutConstraint * constraint in superview.constraints) {
         if (constraint.firstItem == superview && constraint.secondItem == childView && constraint.firstAttribute == attribute) {
             return constraint;
