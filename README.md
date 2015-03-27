@@ -32,12 +32,12 @@ Add the files to your project manually by dragging the JKLLockScreenViewControll
 // ---------------------------------------------------
 // ex) get JKLLockScreenViewController in UIViewController ...
 // ---------------------------------------------------
-    // add UIViewController
-    JKLLockScreenViewController * viewController = [[JKLLockScreenViewController alloc] initWithNibName:NSStringFromClass([JKLLockScreenViewController class]) bundle:nil];
-    [viewController setLockScreenMode:{{lock screen mode}}];    // enum { LockScreenModeNormal, LockScreenModeNew, LockScreenModeChange }
-    [viewController setDelegate:self];
-    [viewController setDataSource:self];
-    [self presentViewController:viewController animated:YES completion:NULL];
+// add UIViewController
+JKLLockScreenViewController * viewController = [[JKLLockScreenViewController alloc] initWithNibName:NSStringFromClass([JKLLockScreenViewController class]) bundle:nil];
+[viewController setLockScreenMode:{{lock screen mode}}];    // enum { LockScreenModeNormal, LockScreenModeNew, LockScreenModeChange }
+[viewController setDelegate:self];
+[viewController setDataSource:self];
+[self presentViewController:viewController animated:YES completion:NULL];
     
 ...
 
