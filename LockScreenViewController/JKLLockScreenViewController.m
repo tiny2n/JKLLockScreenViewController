@@ -54,7 +54,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Touch ID를 지원하고, [일반모드] 였을 경우
+    // [일반모드] 였을 경우
     BOOL isModeNormal = (_lockScreenMode == LockScreenModeNormal);
     if (isModeNormal && [_delegate respondsToSelector:@selector(allowTouchIDLockScreenViewController:)]) {
         if ([_dataSource allowTouchIDLockScreenViewController:self]) {
@@ -194,7 +194,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 }
 
 /**
- 서브 타이틀과 ScreenPinView를 애니메이션 하는 메소드
+ 서브 타이틀과 PincodeView를 애니메이션 하는 메소드
  ! PincodeView는 제약이 서브타이틀과 같이 묶여 있으므로 따로 해주지 않아도 됨
  1차 : 화면 왼쪽 끝으로 이동 with Animation
  2차 : 화면 오른쪽 끝으로 이동 without Animation
@@ -266,7 +266,16 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 #pragma mark JKLLockScreenPincodeViewDelegate
 - (void)lockScreenPincodeView:(JKLLockScreenPincodeView *)lockScreenPincodeView pincode:(NSString *)pincode {
     
-    if (_lockScreenMode != LockScreenModeNormal) {
+    if (_lockScreenMode == LockScreenModeNormal) {
+        // [일반 모드]
+        if ([self lsv_isPincodeValid:pincode]) {
+            [self lsv_unlockScreenSuccessful:pincode];
+        }
+        else {
+            [self lsv_unlockScreenFailure];
+        }
+    }
+    else {
         // [기입 모드], [변경 모드]
         _confirmPincode = pincode;
         [self setLockScreenMode:LockScreenModeNormal];
@@ -277,15 +286,6 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
         
         // 서브타이틀과 pincodeviw 이동 애니메이션
         [self lsv_swipeSubtitleAndPincodeView];
-    }
-    else {
-        // [일반 모드]
-        if ([self lsv_isPincodeValid:pincode]) {
-            [self lsv_unlockScreenSuccessful:pincode];
-        }
-        else {
-            [self lsv_unlockScreenFailure];
-        }
     }
 }
 
