@@ -40,12 +40,12 @@ static const NSUInteger LSPMaxPincodeLength = 4;
 
 - (void)lsp_initialize {
     
+    self.enabled = YES;
     [self initPincode];
 }
 
 - (void)initPincode {
     self.pincode = @"";
-    self.enabled = YES;
 }
 
 /**

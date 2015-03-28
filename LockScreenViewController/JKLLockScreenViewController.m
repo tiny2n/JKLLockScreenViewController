@@ -168,6 +168,7 @@ static const CGFloat LSVShakeAnimationDuration = 0.5f;
     
     dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LSVShakeAnimationDuration * NSEC_PER_SEC));
     dispatch_after(delayInSeconds, dispatch_get_main_queue(), ^(void){
+        [_pincodeView setEnabled:YES];
         [_pincodeView initPincode];
         [_subtitleLabel setText:NSLocalizedStringFromTable(@"Pincode Subtitle", @"JKLockScreen", nil)];
     });
@@ -209,6 +210,7 @@ static const CGFloat LSVShakeAnimationDuration = 0.5f;
         [weakView layoutIfNeeded];
     } completion:^(BOOL finished) {
         
+        [(id)weakCode initPincode];
         centerX.constant = -width;
         [weakView layoutIfNeeded];
         
@@ -269,7 +271,6 @@ static const CGFloat LSVShakeAnimationDuration = 0.5f;
                      subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle Confirm", @"JKLockScreen", nil)];
         
         // 서브타이틀과 pincodeviw 이동 애니메이션
-        [_pincodeView initPincode];
         [self lsv_swipeSubtitleAndPincodeView];
     }
     else {
