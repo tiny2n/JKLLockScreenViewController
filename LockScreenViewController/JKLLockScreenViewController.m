@@ -9,9 +9,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 
-static const CGFloat LSVSwipeAnimationDuration = 0.3f;
-static const CGFloat LSVDismissWaitingDuration = 0.4f;
-static const CGFloat LSVShakeAnimationDuration = 0.5f;
+static const NSTimeInterval LSVSwipeAnimationDuration = 0.3f;
+static const NSTimeInterval LSVDismissWaitingDuration = 0.4f;
+static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 
 @interface JKLLockScreenViewController()<JKLLockScreenPincodeViewDelegate> {
     
@@ -75,25 +75,11 @@ static const CGFloat LSVShakeAnimationDuration = 0.5f;
     // check if the policy can be evaluated
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
         // evaluate
-        __weak id weakSelf = self;
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                 localizedReason:NSLocalizedStringFromTable(@"Pincode TouchID", @"JKLockScreen", nil)
                           reply:^(BOOL success, NSError * authenticationError) {
                               if (success) {
-                                  
-                                  // 인증이 완료된 후 창이 dismiss될 때
-                                  // 너무 빨리 dimiss되면 잔상처럼 남으므로 일정시간 딜레이 걸어서 dismiss 함
-                                  dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LSVDismissWaitingDuration * NSEC_PER_SEC));
-                                  dispatch_after(delayInSeconds, dispatch_get_main_queue(), ^(void){
-                                      dispatch_async(dispatch_get_main_queue(), ^{
-
-                                          [self dismissViewControllerAnimated:NO completion:^{
-                                              if ([_delegate respondsToSelector:@selector(unlockWasSuccessfulLockScreenViewController:)]) {
-                                                  [_delegate unlockWasSuccessfulLockScreenViewController:weakSelf];
-                                              }
-                                          }];
-                                      });
-                                  });
+                                  [self lsv_unlockDelayDismissViewController:LSVDismissWaitingDuration];
                               }
                               else {
                                   NSLog(@"LAContext::Authentication Error : %@", authenticationError);
@@ -104,6 +90,25 @@ static const CGFloat LSVShakeAnimationDuration = 0.5f;
         NSLog(@"LAContext::Policy Error : %@", [error localizedDescription]);
     }
 
+}
+
+/**
+ 일정 시간 딜레이 후 창을 dismiss 하는 메소드
+ @param NSTimeInterval 딜레이 시간
+ */
+- (void)lsv_unlockDelayDismissViewController:(NSTimeInterval)delay {
+    __weak id weakSelf = self;
+    
+    // 인증이 완료된 후 창이 dismiss될 때
+    // 너무 빨리 dimiss되면 잔상처럼 남으므로 일정시간 딜레이 걸어서 dismiss 함
+    dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(delayInSeconds, dispatch_get_main_queue(), ^(void){
+        [self dismissViewControllerAnimated:NO completion:^{
+            if ([_delegate respondsToSelector:@selector(unlockWasSuccessfulLockScreenViewController:)]) {
+                [_delegate unlockWasSuccessfulLockScreenViewController:weakSelf];
+            }
+        }];
+    });
 }
 
 /**
