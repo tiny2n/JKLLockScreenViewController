@@ -22,6 +22,7 @@ IB_DESIGNABLE
 - (void)initPincode;
 - (void)appendingPincode:(NSString *)pincode;
 - (void)removeLastPincode;
+- (void)wasCompleted;
 
 @end
 

@@ -6,7 +6,9 @@
 
 static const NSUInteger LSPMaxPincodeLength = 4;
 
-@interface JKLLockScreenPincodeView()
+@interface JKLLockScreenPincodeView() {
+    NSUInteger _wasCompleted;
+}
 
 @property (nonatomic, strong) NSString * pincode;
 
@@ -94,6 +96,17 @@ static const NSUInteger LSPMaxPincodeLength = 4;
     }
 }
 
+- (void)wasCompleted {
+    for (NSUInteger idx = 0; idx < LSPMaxPincodeLength; idx++) {
+        dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(idx * 0.01f * NSEC_PER_SEC));
+        dispatch_after(delayInSeconds, dispatch_get_main_queue(), ^(void){
+            
+            _wasCompleted++;
+            [self setNeedsDisplay];
+        });
+    }
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
@@ -108,8 +121,10 @@ static const NSUInteger LSPMaxPincodeLength = 4;
     
     CGFloat y = rect.origin.y;
     
+    NSUInteger completed = MAX([_pincode length], _wasCompleted);
+    
     // draw a circle : '.'
-    NSInteger str = MIN([_pincode length], LSPMaxPincodeLength);
+    NSInteger str = MIN(completed, LSPMaxPincodeLength);
     for (NSUInteger idx = 0; idx < str; idx++) {
         CGFloat x = boxSize.width * idx;
         CGRect rounded = CGRectMake(x + floorf((boxSize.width  - charSize.width) / 2),

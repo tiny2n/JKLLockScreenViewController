@@ -99,6 +99,8 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 - (void)lsv_unlockDelayDismissViewController:(NSTimeInterval)delay {
     __weak id weakSelf = self;
     
+    [_pincodeView wasCompleted];
+    
     // 인증이 완료된 후 창이 dismiss될 때
     // 너무 빨리 dimiss되면 잔상처럼 남으므로 일정시간 딜레이 걸어서 dismiss 함
     dispatch_time_t delayInSeconds = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
