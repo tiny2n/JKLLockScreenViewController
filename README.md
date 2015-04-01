@@ -31,6 +31,19 @@ Add the files to your project manually by dragging the JKLLockScreenViewControll
 ```ruby
 platform :ios, '6.0'
 pod 'JKLLockScreenViewController', :git => 'https://github.com/tiny2n/JKLLockScreenViewController.git'
+
+
+!!! if you saw follow error message
+"IB Designables: Failed to update auto layout status: Failed to load designables from path (null)"
+
+add use_frameworks! to 'Podfile' file
+
+ex,.
+...
+platform :ios, '6.0'
+use_frameworks!         <--------- add
+...
+
 ```
 
 
