@@ -30,7 +30,7 @@ Add the files to your project manually by dragging the JKLLockScreenViewControll
 
 ```ruby
 platform :ios, '6.0'
-pod "JKLLockScreenViewController", "~> 1.0.0"
+pod 'JKLLockScreenViewController', '~> 1.0.0', :git => 'https://github.com/tiny2n/JKLLockScreenViewController.git'
 ```
 
 
