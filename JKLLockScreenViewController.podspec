@@ -12,7 +12,6 @@ Pod::Spec.new do |s|
   s.homepage     = "http://tiny2n.tistory.com"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.platform = :ios, '6.0'
-  s.source_files = 'LockScreenViewController/*.{h,m}'
-  s.resources = 'LockScreenViewController/*.{xib}'
+  s.source_files = 'LockScreenViewController/*.*'
   s.requires_arc = true
 end
