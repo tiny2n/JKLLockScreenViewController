@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.platform = :ios, '6.0'
   s.source_files = 'LockScreenViewController/*.{h,m}'
-  s.resources = 'LockScreenViewController/*.{xib}'
+  s.resource_bundles = 'LockScreenViewController/*.{xib}'
   s.requires_arc = true
 end
