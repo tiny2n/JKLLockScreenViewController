@@ -38,7 +38,7 @@ pod 'JKLLockScreenViewController', :git => 'https://github.com/tiny2n/JKLLockScr
 
 add use_frameworks! to 'Podfile' file
 
-ex)
+ex,.
 ...
 platform :ios, '6.0'
 use_frameworks!         <--------- add
