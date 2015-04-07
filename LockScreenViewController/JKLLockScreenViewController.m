@@ -123,13 +123,18 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 - (BOOL)lsv_isPincodeValid:(NSString *)pincode {
     
     // 기존에 암호가 없거나, [변경모드]라면 무조건 YES
-    BOOL confirm = [_confirmPincode isEqualToString:pincode];
-    if (confirm) return YES;
+    if(LockScreenModeVerification == _lockScreenMode) {
+        BOOL confirm = [_confirmPincode isEqualToString:pincode];
+        if (confirm) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
     
     if ([_dataSource respondsToSelector:@selector(lockScreenViewController:pincode:)]) {
         return [_dataSource lockScreenViewController:self pincode:pincode];
     }
-    
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"You must DataSource implement cmd : %@", NSStringFromSelector(_cmd)]
                                  userInfo:nil];
@@ -161,9 +166,10 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
  잠금 해제에 실패했을 경우 발생하는 메소드
  */
 - (void)lsv_unlockScreenFailure {
-
-    if ([_delegate respondsToSelector:@selector(unlockWasFailureLockScreenViewController:)]) {
-        [_delegate unlockWasFailureLockScreenViewController:self];
+    if(LockScreenModeVerification != _lockScreenMode) {
+        if ([_delegate respondsToSelector:@selector(unlockWasFailureLockScreenViewController:)]) {
+            [_delegate unlockWasFailureLockScreenViewController:self];
+        }
     }
     
     // 디바이스 진동
@@ -179,7 +185,24 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
     dispatch_after(delayInSeconds, dispatch_get_main_queue(), ^(void){
         [_pincodeView setEnabled:YES];
         [_pincodeView initPincode];
-        [_subtitleLabel setText:NSLocalizedStringFromTable(@"Pincode Subtitle", @"JKLockScreen", nil)];
+        
+        switch (_lockScreenMode) {
+            case LockScreenModeNormal:
+            case LockScreenModeNew: {
+                // [신규 모드]
+                [self lsv_updateTitle:NSLocalizedStringFromTable(@"Pincode Title",    @"JKLockScreen", nil)
+                             subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle", @"JKLockScreen", nil)];
+                
+                break;
+            }
+            case LockScreenModeChange:
+                // [변경 모드]
+                [self lsv_updateTitle:NSLocalizedStringFromTable(@"New Pincode Title",    @"JKLockScreen", nil)
+                             subtitle:NSLocalizedStringFromTable(@"New Pincode Subtitle", @"JKLockScreen", nil)];
+                break;
+            default:
+                break;
+        }
     });
 }
 
@@ -280,10 +303,11 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
         }
     } else if (_lockScreenMode == LockScreenModeVerification) {
         // [확인 모드]
-        [self setLockScreenMode:_prevLockScreenMode];
         if([self lsv_isPincodeValid:pincode]) {
+            [self setLockScreenMode:_prevLockScreenMode];
             [self lsv_unlockScreenSuccessful:pincode];
         } else {
+            [self setLockScreenMode:_prevLockScreenMode];
             [self lsv_unlockScreenFailure];
         }
     } else {
