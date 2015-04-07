@@ -16,6 +16,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 @interface JKLLockScreenViewController()<JKLLockScreenPincodeViewDelegate> {
     
     NSString * _confirmPincode;
+    LockScreenMode _prevLockScreenMode;
 }
 
 @property (nonatomic, weak) IBOutlet UILabel  * titleLabel;
@@ -32,6 +33,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
     [super viewDidLoad];
     
     switch (_lockScreenMode) {
+        case LockScreenModeVerification:
         case LockScreenModeNormal: {
             // [일반 모드] Cancel 버튼 감춤
             [_cancelButton setHidden:YES];
@@ -276,11 +278,19 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
         else {
             [self lsv_unlockScreenFailure];
         }
-    }
-    else {
+    } else if (_lockScreenMode == LockScreenModeVerification) {
+        // [확인 모드]
+        [self setLockScreenMode:_prevLockScreenMode];
+        if([self lsv_isPincodeValid:pincode]) {
+            [self lsv_unlockScreenSuccessful:pincode];
+        } else {
+            [self lsv_unlockScreenFailure];
+        }
+    } else {
         // [기입 모드], [변경 모드]
         _confirmPincode = pincode;
-        [self setLockScreenMode:LockScreenModeNormal];
+        _prevLockScreenMode = _lockScreenMode;
+        [self setLockScreenMode:LockScreenModeVerification];
         
         // 재입력 타이틀로 전환
         [self lsv_updateTitle:NSLocalizedStringFromTable(@"Pincode Title Confirm",    @"JKLockScreen", nil)
