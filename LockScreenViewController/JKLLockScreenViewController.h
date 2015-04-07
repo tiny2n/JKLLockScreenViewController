@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, LockScreenMode) {
     LockScreenModeNormal = 0,       // [일반 모드]
     LockScreenModeNew,              // [신규 모드]
     LockScreenModeChange,           // [변경 모드]
+    LockScreenModeVerification,     // [확인 모드]
 };
 
 @protocol JKLLockScreenViewControllerDelegate;
