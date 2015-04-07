@@ -122,22 +122,13 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
  */
 - (BOOL)lsv_isPincodeValid:(NSString *)pincode {
     
-    // 기존에 암호가 없거나, [변경모드]라면 무조건 YES
-    if(LockScreenModeVerification == _lockScreenMode) {
-        BOOL confirm = [_confirmPincode isEqualToString:pincode];
-        if (confirm) {
-            return YES;
-        } else {
-            return NO;
-        }
+    // [확인모드]일 경우, Confirm Pincode와 비교
+    if (_lockScreenMode == LockScreenModeVerification) {
+        return [_confirmPincode isEqualToString:pincode];
     }
     
-    if ([_dataSource respondsToSelector:@selector(lockScreenViewController:pincode:)]) {
-        return [_dataSource lockScreenViewController:self pincode:pincode];
-    }
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must DataSource implement cmd : %@", NSStringFromSelector(_cmd)]
-                                 userInfo:nil];
+    // [신규모드], [변경모드]일 경우 기존 Pincode와 비교
+    return [_dataSource lockScreenViewController:self pincode:pincode];
 }
 
 /**
@@ -166,7 +157,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
  잠금 해제에 실패했을 경우 발생하는 메소드
  */
 - (void)lsv_unlockScreenFailure {
-    if(LockScreenModeVerification != _lockScreenMode) {
+    if (_lockScreenMode != LockScreenModeVerification) {
         if ([_delegate respondsToSelector:@selector(unlockWasFailureLockScreenViewController:)]) {
             [_delegate unlockWasFailureLockScreenViewController:self];
         }
@@ -303,15 +294,17 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
         }
     } else if (_lockScreenMode == LockScreenModeVerification) {
         // [확인 모드]
-        if([self lsv_isPincodeValid:pincode]) {
+        if ([self lsv_isPincodeValid:pincode]) {
             [self setLockScreenMode:_prevLockScreenMode];
             [self lsv_unlockScreenSuccessful:pincode];
-        } else {
+        }
+        else {
             [self setLockScreenMode:_prevLockScreenMode];
             [self lsv_unlockScreenFailure];
         }
-    } else {
-        // [기입 모드], [변경 모드]
+    }
+    else {
+        // [신규 모드], [변경 모드]
         _confirmPincode = pincode;
         _prevLockScreenMode = _lockScreenMode;
         [self setLockScreenMode:LockScreenModeVerification];
@@ -325,19 +318,15 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
     }
 }
 
-#pragma mark - Lock Orientation
-
+#pragma mark - 
+#pragma mark LockScreenViewController Orientation
 - (BOOL)shouldAutorotate {
-    return NO;
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-// pre-iOS 6 support
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 @end
