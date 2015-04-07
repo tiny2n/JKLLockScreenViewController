@@ -291,4 +291,19 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
     }
 }
 
+#pragma mark - Lock Orientation
+
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+// pre-iOS 6 support
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
 @end
