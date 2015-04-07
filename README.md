@@ -87,6 +87,10 @@ JKLLockScreenViewController * viewController = [[JKLLockScreenViewController all
 ![DropAlert](https://github.com/tiny2n/JKLLockScreenViewController/blob/master/Screenshot.png)
 
 
+### thanks
+
+- [intmain](https://github.com/intmain)
+
 License
 -------------------------------------------------------
 The MIT License (MIT)
