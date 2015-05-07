@@ -76,7 +76,7 @@ JKLLockScreenViewController * viewController = [[JKLLockScreenViewController all
 - (void)unlockWasFailureLockScreenViewController:(JKLLockScreenViewController *)lockScreenViewController;
 
 // ---------------------------------------------------
-// Delegate
+// DataSource
 // ---------------------------------------------------
 - (BOOL)lockScreenViewController:(JKLLockScreenViewController *)lockScreenViewController pincode:(NSString *)pincode;
 - (BOOL)allowTouchIDLockScreenViewController:(JKLLockScreenViewController *)lockScreenViewController;
