@@ -117,7 +117,7 @@ static const NSUInteger LSPMaxPincodeLength = 4;
     
     // 1 character box size
     CGSize boxSize  = CGSizeMake(CGRectGetWidth(rect) / LSPMaxPincodeLength, CGRectGetHeight(rect));
-    CGSize charSize = CGSizeMake(16, 4);
+    CGSize charSize = CGSizeMake(13, 13);
     
     CGFloat y = rect.origin.y;
     
@@ -130,11 +130,11 @@ static const NSUInteger LSPMaxPincodeLength = 4;
         CGRect rounded = CGRectMake(x + floorf((boxSize.width  - charSize.width) / 2),
                                     y + floorf((boxSize.height - charSize.width) / 2),
                                     charSize.width,
-                                    charSize.width);
+                                    charSize.height);
         
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetFillColorWithColor(context, _pincodeColor.CGColor);
-        CGContextSetLineWidth(context, 2.0);
+        CGContextSetLineWidth(context, 1.0);
         CGContextFillEllipseInRect(context, rounded);
         CGContextFillPath(context);
     }
@@ -147,8 +147,11 @@ static const NSUInteger LSPMaxPincodeLength = 4;
                                     charSize.width,
                                     charSize.height);
         
-        UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:rounded cornerRadius:5];
-        [path fill];
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetStrokeColorWithColor(context, _pincodeColor.CGColor);
+        CGContextSetLineWidth(context, 1.0);
+        CGContextAddEllipseInRect(context, rounded);
+        CGContextStrokePath(context);
     }
 }
 
