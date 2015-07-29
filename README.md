@@ -90,6 +90,7 @@ JKLLockScreenViewController * viewController = [[JKLLockScreenViewController all
 ### thanks
 
 - [intmain](https://github.com/intmain)
+- [Hung Nguyen](https://github.com/nahung89)
 
 License
 -------------------------------------------------------
