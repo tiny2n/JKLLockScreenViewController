@@ -5,6 +5,7 @@
 #import "JKLLockScreenViewController.h"
 
 #import "JKLLockScreenPincodeView.h"
+#import "JKLLockScreenNumber.h"
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <LocalAuthentication/LocalAuthentication.h>
@@ -22,6 +23,9 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 @property (nonatomic, weak) IBOutlet UILabel  * titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel  * subtitleLabel;
 @property (nonatomic, weak) IBOutlet UIButton * cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton * deleteButton;
+@property (strong, nonatomic) IBOutletCollection(JKLLockScreenNumber) NSArray *numberButtons;
+
 @property (nonatomic, weak) IBOutlet JKLLockScreenPincodeView * pincodeView;
 
 @end
@@ -42,7 +46,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
             // [신규 모드]
             [self lsv_updateTitle:NSLocalizedStringFromTable(@"Pincode Title",    @"JKLockScreen", nil)
                          subtitle:NSLocalizedStringFromTable(@"Pincode Subtitle", @"JKLockScreen", nil)];
-
+            
             break;
         }
         case LockScreenModeChange:
@@ -51,6 +55,8 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
                          subtitle:NSLocalizedStringFromTable(@"New Pincode Subtitle", @"JKLockScreen", nil)];
             break;
     }
+    
+    if (_tintColor) [self tintSubviewsWithColor:_tintColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -63,6 +69,22 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
             // Touch ID 암호 입력창 호출
             [self lsv_policyDeviceOwnerAuthentication];
         }
+    }
+}
+
+/**
+ *  Changes buttons tint color
+ *
+ *  @param color tint color for buttons
+ */
+- (void)tintSubviewsWithColor: (UIColor *) color{
+    [_cancelButton setTitleColor:color forState:UIControlStateNormal];
+    [_deleteButton setTitleColor:color forState:UIControlStateNormal];
+    [_pincodeView setPincodeColor:color];
+    
+    for (JKLLockScreenNumber * number in _numberButtons)
+    {
+        [number setTintColor:color];
     }
 }
 
@@ -91,7 +113,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
     else {
         NSLog(@"LAContext::Policy Error : %@", [error localizedDescription]);
     }
-
+    
 }
 
 /**
@@ -325,7 +347,7 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-
+    
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
