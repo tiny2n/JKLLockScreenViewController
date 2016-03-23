@@ -26,6 +26,11 @@ typedef NS_ENUM(NSInteger, LockScreenMode) {
 @property (nonatomic, weak) IBOutlet id<JKLLockScreenViewControllerDelegate> delegate;
 @property (nonatomic, weak) IBOutlet id<JKLLockScreenViewControllerDataSource> dataSource;
 
+/**
+ *  Tint color for the buttons
+ */
+@property (nonatomic, weak) UIColor *tintColor;
+
 @end
 
 @protocol JKLLockScreenViewControllerDelegate <NSObject>

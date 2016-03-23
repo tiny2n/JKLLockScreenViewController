@@ -31,13 +31,15 @@
     [viewController setLockScreenMode:[sender tag]];    // enum { LockScreenModeNormal, LockScreenModeNew, LockScreenModeChange }
     [viewController setDelegate:self];
     [viewController setDataSource:self];
+    [viewController setTintColor:[UIColor redColor]];
+    
     [self presentViewController:viewController animated:YES completion:NULL];
 }
 
 #pragma mark -
 #pragma mark YMDLockScreenViewControllerDelegate
 - (void)unlockWasCancelledLockScreenViewController:(JKLLockScreenViewController *)lockScreenViewController {
-
+    
     NSLog(@"LockScreenViewController dismiss because of cancel");
 }
 
@@ -58,7 +60,7 @@
 }
 
 - (BOOL)allowTouchIDLockScreenViewController:(JKLLockScreenViewController *)lockScreenViewController {
-
+    
     return YES;
 }
 
