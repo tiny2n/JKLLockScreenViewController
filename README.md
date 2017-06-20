@@ -14,7 +14,6 @@ Feature
 - IB_DESIGNABLE
 - Autolayout
 - Localization
-- Cocoapods
 
 
 ### Installation
