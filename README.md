@@ -8,6 +8,8 @@ Overview
 -------------
 It is Lock Screen Controller on platform iOS.
 
+https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW75
+
 Feature
 -------------
 - Touch ID
