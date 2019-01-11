@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, LockScreenMode) {
  */
 @property (nonatomic, weak) UIColor *tintColor;
 
+- (id)init;
+
 @end
 
 @protocol JKLLockScreenViewControllerDelegate <NSObject>

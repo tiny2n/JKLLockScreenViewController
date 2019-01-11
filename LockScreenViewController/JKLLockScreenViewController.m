@@ -33,6 +33,11 @@ static const NSTimeInterval LSVShakeAnimationDuration = 0.5f;
 
 @implementation JKLLockScreenViewController
 
+- (id)init {
+    self = [super initWithNibName:@"JKLLockScreenViewController" bundle:[NSBundle bundleForClass:[JKLLockScreenViewController class]]];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

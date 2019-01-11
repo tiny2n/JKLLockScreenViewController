@@ -27,7 +27,7 @@
 }
 
 - (IBAction)onPincodeClikced:(id)sender {
-    JKLLockScreenViewController * viewController = [[JKLLockScreenViewController alloc] initWithNibName:NSStringFromClass([JKLLockScreenViewController class]) bundle:nil];
+    JKLLockScreenViewController * viewController = [[JKLLockScreenViewController alloc] init];
     [viewController setLockScreenMode:[sender tag]];    // enum { LockScreenModeNormal, LockScreenModeNew, LockScreenModeChange }
     [viewController setDelegate:self];
     [viewController setDataSource:self];
