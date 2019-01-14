@@ -162,7 +162,7 @@ static const NSUInteger LSPMaxPincodeLength = 4;
     }
 }
 
-- (void)drawDotAndDash:(CGRect)rect {
+- (void)drawDashAndDot:(CGRect)rect {
     [_pincodeColor setFill];
     
     // 1 character box size
