@@ -73,11 +73,11 @@ static const NSUInteger LSPMaxPincodeLength = 4;
  @param NSString PIN code
  */
 - (void)appendingPincode:(NSString *)pincode {
-
+    
     if (!_enabled) return;
-
+    
     NSString * appended = [_pincode stringByAppendingString:pincode];
-
+    
     // 최대 자릿수를 넘는다면 최대 자릿수만큼만 설정
     NSUInteger length = MIN([appended length], LSPMaxPincodeLength);
     self.pincode = [appended substringToIndex:length];
@@ -112,7 +112,14 @@ static const NSUInteger LSPMaxPincodeLength = 4;
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     [super drawRect:rect];
-    
+    if (self.dotAndDashStyle) {
+        [self drawCircleAndDash:rect];
+    }else {
+        [self drawDashAndDot:rect];
+    }
+}
+
+- (void)drawCircleAndDash:(CGRect)rect {
     [_pincodeColor setFill];
     
     // 1 character box size
@@ -152,6 +159,46 @@ static const NSUInteger LSPMaxPincodeLength = 4;
         CGContextSetLineWidth(context, 1.0);
         CGContextAddEllipseInRect(context, rounded);
         CGContextStrokePath(context);
+    }
+}
+
+- (void)drawDotAndDash:(CGRect)rect {
+    [_pincodeColor setFill];
+    
+    // 1 character box size
+    CGSize boxSize  = CGSizeMake(CGRectGetWidth(rect) / LSPMaxPincodeLength, CGRectGetHeight(rect));
+    CGSize charSize = CGSizeMake(16, 4);
+    
+    CGFloat y = rect.origin.y;
+    
+    NSUInteger completed = MAX([_pincode length], _wasCompleted);
+    
+    // draw a circle : '.'
+    NSInteger str = MIN(completed, LSPMaxPincodeLength);
+    for (NSUInteger idx = 0; idx < str; idx++) {
+        CGFloat x = boxSize.width * idx;
+        CGRect rounded = CGRectMake(x + floorf((boxSize.width  - charSize.width) / 2),
+                                    y + floorf((boxSize.height - charSize.width) / 2),
+                                    charSize.width,
+                                    charSize.width);
+        
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetFillColorWithColor(context, _pincodeColor.CGColor);
+        CGContextSetLineWidth(context, 2.0);
+        CGContextFillEllipseInRect(context, rounded);
+        CGContextFillPath(context);
+    }
+    
+    // draw a dash : '-'
+    for (NSUInteger idx = str; idx < LSPMaxPincodeLength; idx++) {
+        CGFloat x = boxSize.width * idx;
+        CGRect rounded = CGRectMake(x + floorf((boxSize.width  - charSize.width)  / 2),
+                                    y + floorf((boxSize.height - charSize.height) / 2),
+                                    charSize.width,
+                                    charSize.height);
+        
+        UIBezierPath * path = [UIBezierPath bezierPathWithRoundedRect:rounded cornerRadius:5];
+        [path fill];
     }
 }
 

@@ -17,6 +17,7 @@ IB_DESIGNABLE
 
 @property (nonatomic, weak) IBOutlet id<JKLLockScreenPincodeViewDelegate> delegate;
 @property (nonatomic, strong) IBInspectable UIColor * pincodeColor;
+@property (nonatomic, unsafe_unretained) IBInspectable BOOL dotAndDashStyle;
 @property (nonatomic, unsafe_unretained) IBInspectable BOOL enabled;
 
 - (void)initPincode;
